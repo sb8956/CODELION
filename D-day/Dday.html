@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기념일 계산기</title>
+    <style>
+        h3,h4{
+            text-align: center;
+            font-style: normal;
+        }
+        .date{
+            color: gray;
+        }
+        .special{
+            display: flex;
+            justify-content: space-between;
+        }
+        section{
+            border-bottom:1px solid gainsboro;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>ㅇㅇㅇ ♥ ㅁㅁㅁ</h2>
+        <h3 class="date">2021-01-15</h3>
+        <h4 id="love">0일째</h4>
+    </div>
+    <section class="special">
+        <h3>크리스마스 데이</h3>
+        <div class="datebox">
+            <p id="christmas">0일 남음</p>
+            <p class="date">2022.12.25</p>
+        </div>
+    </section>
+    <section class="special">
+        <h3>1000일</h3>
+        <div class="datebox">
+            <p id="thousand">0일 남음</p>
+            <p id="thousanddate" class="date">0000.00.00</p>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        //사귄 날짜
+        var now = new Date();
+        var start = new Date('2021-01-15');
+
+        var Diff = now.getTime() - start.getTime();
+        var day = Math.floor(Diff / (1000 * 60 * 60 * 24) + 1);
+        $('#love').text(day + '일째');
+
+        //기념일까지 남은 날짜 (크리스마스)
+        
+        var christmas = new Date('2022-12-25');
+        
+        var Diff2 = christmas.getTime() - now.getTime();
+        var day2 = Math.floor(Diff2 / (1000 * 60 * 60 * 24) + 1);
+        $('#christmas').text(day2 + '일 남음');
+
+        //1000일 날짜
+        var thou = start.getTime()+999*(1000*60*60*24);
+        var thousand = new Date(thou);
+        var thousandDate = thousand.getFullYear()+'.'+(thousand.getDate()+1)+'.'+thousand.getDate();
+        $('#thousanddate').text(thousandDate);
+
+        //1000일까지 남은 날짜
+        var Diff3 = thousand.getTime()-now.getTime();
+        var day3 = Math.floor(Diff3 / (1000 * 60 * 60 * 24) + 1);
+        $('#thousand').text(day3 +'일 남음');
+
+    </script>
+</body>
+</html>
